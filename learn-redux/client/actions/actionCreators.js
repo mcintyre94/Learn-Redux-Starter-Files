@@ -2,7 +2,7 @@
 export const incrementLikes = postId => {
   return {
     type: "INCREMENT_LIKES",
-    index
+    postId
   };
 };
 
