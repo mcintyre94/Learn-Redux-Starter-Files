@@ -7,7 +7,12 @@ const Comments = props => {
         <p>
           <strong>{comment.user}</strong>
           {comment.text}
-          <button className="remove-comment">&times;</button>
+          <button
+            className="remove-comment"
+            onClick={props.removeComment.bind(null, props.params.postId, i)}
+          >
+            &times;
+          </button>
         </p>
       </div>
     );
@@ -22,6 +27,7 @@ const Comments = props => {
     const author = form.querySelector('input[name="author"]').value;
     const comment = form.querySelector('input[name="comment"]').value;
     props.addComment(postId, author, comment);
+    form.reset();
   };
 
   return (
