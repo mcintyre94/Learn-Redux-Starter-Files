@@ -5,13 +5,15 @@ import Comments from "./Comments";
 const Single = props => {
   // Need index of the pos
   const { posts, params } = props;
-  const i = posts.findIndex(post => post.code === params.postId);
+  const postId = params.postId;
+  const i = posts.findIndex(post => post.code === postId);
   const post = posts[i];
-  console.log(post);
+  const postComments = props.comments[postId] || [];
+
   return (
     <div className="single-photo">
       <Photo index={i} post={post} {...props} />
-      <Comments />
+      <Comments postComments={postComments} />
     </div>
   );
 };
